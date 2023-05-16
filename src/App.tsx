@@ -1,13 +1,19 @@
-import ListGroup from "./components/ListGroup";
-const items = ["New York", "San Francisco", "Tokyo", "London", "Paris"];
+import { useState } from "react";
+
 function App() {
+  const [game, setGame] = useState({
+    id: 1,
+    player: {
+      name: "John",
+    },
+  });
+  const handleClick = () => {
+    setGame({ ...game, player: { ...game.player, name: "Abhi" } });
+  };
   return (
     <div>
-      <ListGroup
-        items={items}
-        heading="List"
-        onSelectItem={(item) => console.log(item)}
-      />
+      <div>{game.player.name}</div>
+      <button onClick={handleClick}>Click Me</button>
     </div>
   );
 }
